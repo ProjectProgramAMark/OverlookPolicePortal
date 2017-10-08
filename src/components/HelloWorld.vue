@@ -40,7 +40,7 @@ export default {
   methods: {
     getAll: function() {
       let that = this;
-      Axios.get('http://overlook-api.herokuapp.com/get-all-skimmers').then(function(res) {
+      Axios.get('https://overlook-api.herokuapp.com/get-all-skimmers').then(function(res) {
         that.responseData = res.data;
         console.log('Response', JSON.stringify(res.data));
         Object.keys(that.responseData).forEach(function (key) {
@@ -55,7 +55,7 @@ export default {
     },
     removeSkimmer: function(UUID, index) {
       let that = this;
-      Axios.post('http://overlook-api.herokuapp.com/skimmer-removed', {uuid: UUID}).then(function(res) {
+      Axios.post('https://overlook-api.herokuapp.com/skimmer-removed', {uuid: UUID}).then(function(res) {
         console.log("This is the response for remove function: ", res);
         if(res.data.removed) {
           that.arr.splice(index, 1);
