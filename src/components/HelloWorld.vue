@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(data, index) in arr" v-if="arr.removed">
+      <tr v-for="(data, index) in arr" v-if="arr.removed == 'false'">
         <td>{{data.location_address}}</td>
         <td>{{data.location_name}}</td>
         <td>{{data.lat}} "," {{data.long}}</td>
