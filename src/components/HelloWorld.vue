@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(data, index) in arr" v-if="arr.removed == 'false'">
+      <tr v-for="(data, index) in arr" v-if="!arr.removed">
         <td>{{data.location_address}}</td>
         <td>{{data.location_name}}</td>
         <td>{{data.lat}} "," {{data.long}}</td>
@@ -40,7 +40,7 @@ export default {
   methods: {
     getAll: function() {
       let that = this;
-      Axios.get('https://overlook-api.herokuapp.com/get-all-skimmers').then(function(res) {
+      Axios.get('http://overlook-api.herokuapp.com/get-all-skimmers').then(function(res) {
         that.responseData = res.data;
         console.log('Response', JSON.stringify(res.data));
         Object.keys(that.responseData).forEach(function (key) {
@@ -55,7 +55,7 @@ export default {
     },
     removeSkimmer: function(UUID, index) {
       let that = this;
-      Axios.post('https://overlook-api.herokuapp.com/skimmer-removed', {uuid: UUID}).then(function(res) {
+      Axios.post('http://overlook-api.herokuapp.com/skimmer-removed', {uuid: UUID}).then(function(res) {
         console.log("This is the response for remove function: ", res);
         if(res.data.removed) {
           that.arr.splice(index, 1);
